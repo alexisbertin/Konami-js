@@ -8,7 +8,6 @@ var Konami = (function () {
     Konami.prototype = {
         constructor: Konami,
         listen: function (event) {
-            console.log(event, this);
             if (event.which === this.pattern[this.pos]) {
                 this.pos++;
                 clearTimeout(this.timeout);
