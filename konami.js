@@ -22,6 +22,7 @@ var Konami = (function () {
             this.pos = 0;
         },
         complete: function () {
+            console.log('Konami code complete!');
             console.log('override this');
         }
     };
