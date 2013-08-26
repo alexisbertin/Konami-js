@@ -12,9 +12,12 @@ var Konami = (function() {
 		}
 		konami.timeout = setTimeout(konami.reset, konami.limit);
 		if (konami.pos >= konami.pattern.length) {
-			konami.pos = 0;
+			konami.reset();
 			konami.complete();
 		}
+	};
+	konami.reset = function() {
+		konami.pos = 0;
 	};
 	konami.complete = function() {
 		console.log('triggered!\nyou probably want to replace me..');
