@@ -1,32 +1,24 @@
-var Konami = (function () {
-    function Konami() {
-        this.pos = 0;
-        this.pattern = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-        this.limit = 500;
-        this.timeout = null;
-    }
-    Konami.prototype = {
-        constructor: Konami,
-        listen: function (event) {
-            if (event.which === this.pattern[this.pos]) {
-                this.pos++;
-                clearTimeout(this.timeout);
-            }
-            this.timeout = setTimeout(this.reset, this.limit);
-            if (this.pos >= this.pattern.length) {
-                this.reset();
-                this.complete();
-            }
-        },
-        reset: function () {
-            this.pos = 0;
-        },
-        complete: function () {
-            console.log('Konami code complete!');
-            console.log('override this');
-        }
-    };
-    var k = new Konami();
-    document.addEventListener('keydown', k.listen.bind(k), false);
-    return k;
+var Konami = (function() {
+	var konami = {
+		pos: 0,
+		pattern: [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+		limit: 500,
+		timeout: null
+	};
+	konami.listen = function(event) {
+		if (event.which === konami.pattern[konami.pos]) {
+			konami.pos++;
+			clearTimeout(konami.timeout);
+		}
+		konami.timeout = setTimeout(konami.reset, konami.limit);
+		if (konami.pos >= konami.pattern.length) {
+			konami.pos = 0;
+			konami.complete();
+		}
+	};
+	konami.complete = function() {
+		console.log('triggered!\nyou probably want to replace me..');
+	};
+	document.addEventListener('keydown', konami.listen, false);
+	return konami;
 }());
